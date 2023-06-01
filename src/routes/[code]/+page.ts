@@ -11,6 +11,7 @@ export const load = (async ({fetch, params}) => {
 
   return {
     code: params.code,
+    created: response.headers.get("last-modified"),
     body: await response.text()
   };
 
