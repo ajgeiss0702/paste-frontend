@@ -30,8 +30,11 @@ export function displayDateTime(date: Date | string, now: Date | number = Date.n
 
   if(!nowDate) nowDate = new Date(now);
 
-  if(distance < 48 * HOUR && date.getDate() == nowDate.getDate()-1) {
-    return "yesterday";
+  const yesterday = new Date(nowDate);
+  yesterday.setDate(yesterday.getDate() - 1);
+
+  if(distance < 48 * HOUR && date.getDate() == yesterday.getDate()) {
+    return "yesterday at " + date.toLocaleTimeString();
   }
 
 
