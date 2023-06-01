@@ -4,7 +4,14 @@ import { error, redirect } from "@sveltejs/kit";
 export const actions = {
   default: async ({request}) => {
     const data = await request.formData();
-    const content = await data.get('content');
+    let content = await data.get('content');
+
+    if(!content) {
+      content = await data.get('file')
+      if(!content) {
+        throw error(400, "Missing content or file");
+      }
+    }
 
     const response = await fetch("https://bytebin.ajg0702.us/post", {
       method: "POST",
