@@ -6,6 +6,8 @@
 
   let updateIndex = 0;
 
+  const rawURL = data.pastebin ? "https://pastebin.com/raw/" : "https://bytebin.ajg0702.us/";
+
   onMount(() => {
     let interval = setInterval(() => updateIndex++, 5e3);
 
@@ -18,7 +20,7 @@
 </svelte:head>
 
 <span class="nav-bump">
-  <a href="https://bytebin.ajg0702.us/{data.code}">
+  <a href="{rawURL}{data.code}">
     Raw
   </a>
 </span>

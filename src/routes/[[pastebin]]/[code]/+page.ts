@@ -4,8 +4,9 @@ import { error } from "@sveltejs/kit";
 export const load = (async ({fetch, params}) => {
 
   let response: Response;
+  const pastebin = params.pastebin && params.pastebin.toLowerCase() === "pastebin";
 
-  if(params.pastebin && params.pastebin.toLowerCase() === "pastebin") {
+  if(pastebin) {
     response = await fetch("/api/pastebin/" + params.code);
   } else {
     response = await fetch("https://bytebin.ajg0702.us/" + params.code);
@@ -18,7 +19,8 @@ export const load = (async ({fetch, params}) => {
   return {
     code: params.code,
     created: response.headers.get("last-modified"),
-    body: await response.text()
+    body: await response.text(),
+    pastebin
   };
 
 }) satisfies PageLoad
