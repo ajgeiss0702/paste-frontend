@@ -23,12 +23,14 @@
   </a>
 </span>
 
-<span class="created opacity-75">
-  Created
-  {#key updateIndex}
-    {displayDateTime(data.created)}
-  {/key}
-</span>
+{#if data.created}
+  <span class="created opacity-75">
+    Created
+      {#key updateIndex}
+      {displayDateTime(data.created)}
+    {/key}
+  </span>
+{/if}
 
 <hr>
 

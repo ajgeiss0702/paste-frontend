@@ -3,7 +3,13 @@ import { error } from "@sveltejs/kit";
 
 export const load = (async ({fetch, params}) => {
 
-  const response = await fetch("https://bytebin.ajg0702.us/" + params.code);
+  let response: Response;
+
+  if(params.pastebin && params.pastebin.toLowerCase() === "pastebin") {
+    response = await fetch("/api/pastebin/" + params.code);
+  } else {
+    response = await fetch("https://bytebin.ajg0702.us/" + params.code);
+  }
 
   if(response.status != 200) {
     throw error(response.status, response.statusText);
