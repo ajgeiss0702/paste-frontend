@@ -36,12 +36,13 @@
 
 <hr>
 
-<pre class="m-2">{data.body}</pre>
+<pre class="m-2 mb-0">{data.body}</pre>
 
 <style>
   pre {
       max-width: 100vw;
       overflow-y: auto;
+      min-height: calc(100vh - var(--nav-height) - 1.1rem);
   }
 
   .created {
