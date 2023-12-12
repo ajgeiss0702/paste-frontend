@@ -23,6 +23,12 @@
   <a href="{rawURL}{data.code}">
     Raw
   </a>
+  &nbsp;
+  &nbsp;
+  &nbsp;
+  <a href="/removal" target="_blank">
+    Request Removal
+  </a>
 </span>
 
 {#if data.created}
